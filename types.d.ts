@@ -1,10 +1,10 @@
-export interface User {
+interface User {
   id: number;
   name: string;
   username: string;
   email: string;
 }
-export interface Post {
+interface Post {
   id: number;
   title: string;
   userId: string;

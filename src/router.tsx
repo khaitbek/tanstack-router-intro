@@ -1,8 +1,9 @@
-import { RootRoute, Route, Router } from "@tanstack/router";
+import { RootRoute, Route, Router } from "@tanstack/react-router";
 import { RootLayout } from "./layouts";
 import Home from "./pages/Home";
-import Users from "./pages/Users";
+import Post from "./pages/Post";
 import Posts from "./pages/Posts";
+import Users from "./pages/Users";
 
 // create a new root route
 const rootRoute = new RootRoute({ component: RootLayout });
@@ -14,24 +15,32 @@ const userRoute = new Route({
   path: "/users",
   component: Users
 });
+
 const postsRoute = new Route({
   getParentRoute: () => rootRoute,
   path: "/posts",
   component: Posts
 });
 
+const singlePostRouter = new Route({
+  getParentRoute: () => postsRoute,
+  path: "$postId",
+  component: Post
+})
+
 // create a route tree
 const routeTree = rootRoute.addChildren([
   indexRoute,
   userRoute,
-  postsRoute
+  postsRoute,
+  singlePostRouter
 ]);
 
 // create router
 const router = new Router({ routeTree });
 
 // register your router for type-safety magic
-declare module "@tanstack/router" {
+declare module "@tanstack/react-router" {
   interface Register {
     router: typeof router;
   }

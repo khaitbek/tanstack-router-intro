@@ -6,7 +6,7 @@ export default function Home() {
       justifyContent: "center",
       minHeight: "80dvh"
     }}>
-      <h1 style={{
+      <h1 className="" style={{
         fontSize: "3rem",
         textAlign: "center",
         fontFamily: "sans-serif"

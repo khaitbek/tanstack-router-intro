@@ -1,5 +1,4 @@
 import { Data } from "../components";
-import { User } from "../types";
 
 
 
